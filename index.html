@@ -622,5 +622,22 @@ appointment.changeStatus(newStatus);</pre>
   <div class="foot"><span>오수민 · 010-4055-1152 · ohsoomin812@gmail.com</span><span>6</span></div>
 </div>
 
+<script>
+(function(){
+  var PAGE = 793.7, TARGET = 718, scale = TARGET / PAGE;
+  var w = document.createElement('div');
+  w.style.transformOrigin = 'top left';
+  w.style.transform = 'scale(' + scale + ')';
+  w.style.width = PAGE + 'px';
+  while (document.body.firstChild) w.appendChild(document.body.firstChild);
+  document.body.appendChild(w);
+  document.body.style.margin = '0';
+  document.documentElement.style.background = document.body.style.background = '#e9e9e9';
+  function setH(){ document.body.style.height = w.getBoundingClientRect().height + 'px'; }
+  window.addEventListener('load', setH);
+  window.addEventListener('resize', setH);
+  setH(); requestAnimationFrame(setH);
+})();
+</script>
 </body>
 </html>
