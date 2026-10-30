@@ -126,6 +126,20 @@
   .note b { display: block; color: var(--ink); margin-bottom: .4mm; }
   .note + .note { margin-top: 3mm; }
 
+  /* ---------- 화면: 페이지 경계 없이 하나의 긴 페이지로 이어 보기 ---------- */
+  @media screen {
+    html, body { background: #fff !important; }
+    .page {
+      height: auto; min-height: 0;
+      margin: 0 auto;                 /* 페이지 사이 회색 간격 제거 */
+      padding-top: 11mm; padding-bottom: 11mm;
+      overflow: visible;              /* 고정 높이에 의한 잘림 방지 */
+    }
+    .page:first-child { padding-top: 16mm; }
+    .page:last-child  { padding-bottom: 16mm; }
+    .head, .foot { display: none; }   /* 반복되는 머리말·꼬리말(페이지 번호) 숨김 */
+  }
+
   @page { size: A4; margin: 0; }
   @media print {
     body { background: none; }
@@ -632,7 +646,7 @@ appointment.changeStatus(newStatus);</pre>
   while (document.body.firstChild) w.appendChild(document.body.firstChild);
   document.body.appendChild(w);
   document.body.style.margin = '0';
-  document.documentElement.style.background = document.body.style.background = '#e9e9e9';
+  document.documentElement.style.background = document.body.style.background = '#fff';
   function setH(){ document.body.style.height = w.getBoundingClientRect().height + 'px'; }
   window.addEventListener('load', setH);
   window.addEventListener('resize', setH);
